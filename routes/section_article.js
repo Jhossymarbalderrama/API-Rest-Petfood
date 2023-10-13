@@ -4,7 +4,9 @@ const sectionArticleController = require("../controllers/section_article");
 
 const router = express.Router();
 
-router.get('/', sectionArticleController.getAllSectionsArticles);
+router.get('/', sectionArticleController.getAllSectionArticles);
+
+router.get('/:id', sectionArticleController.getSectionArticleID);
 
 router.post('/', sectionArticleController.postSectionArticle);
 

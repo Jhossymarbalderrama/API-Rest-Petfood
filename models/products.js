@@ -10,6 +10,14 @@ module.exports = class Product {
     this.date = date;
   }
 
+  static getProductID(id){
+    return db.execute("SELECT * FROM product WHERE id = ?", [id]);
+  }
+
+  static getProductIDUser(id_user){
+    return db.execute("SELECT * FROM product WHERE id = ?", [id_user]);
+  }
+
   static getAllProducts() {
     return db.execute("SELECT * FROM product");
   }

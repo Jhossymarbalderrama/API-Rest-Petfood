@@ -1,5 +1,28 @@
 const Article = require("../models/article");
 
+exports.getArticleID = async (req, res, next) => {
+  try {
+    const article = await Article.getArticleID(req.params.id);
+    res.status(200).json(article[0][0]);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
+exports.getArticleIDUser = async (req, res, next) => {
+  try {
+    const article = await Article.getArticleIDUser(req.params.id_user);
+    res.status(200).json(article[0]);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
 exports.getAllArticles = async (req, res, next) => {
   try {
     const [allArticles] = await Article.getAllArticles();

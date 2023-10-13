@@ -1,5 +1,17 @@
 const StateArticle = require("../models/state_article");
 
+exports.getStateID = async (req, res, next) => {
+  try {
+    const stateArticle = await StateArticle.getStateID(req.params.id);
+    res.status(200).json(stateArticle);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
 exports.getAllStatesArticles = async (req, res, next) => {
   try {
     const [allStatesArticles] = await StateArticle.getAllStatesArticles();

@@ -6,7 +6,11 @@ module.exports = class SectionArticle{
         this.name = name;
     }
 
-    static getAllSectionsArticles(){
+    static getSectionArticleID(id){
+        return db.execute("SELECT * FROM section WHERE id = ?",[id]);
+    }
+
+    static getAllSectionArticles(){
         return db.execute('SELECT * FROM section');
     }
 

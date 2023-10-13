@@ -21,6 +21,14 @@ module.exports = class Article {
         this.state = state;
     }
 
+    static getArticleID(id){
+        return db.execute("SELECT * FROM article WHERE id = ?",[id]);
+    }
+
+    static getArticleIDUser(id_user){
+        return db.execute("SELECT * FROM article WHERE id_user = ?",[id_user]);
+    }
+
     static getAllArticles() {
         return db.execute("SELECT * FROM article");
     }

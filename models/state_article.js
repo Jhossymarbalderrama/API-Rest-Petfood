@@ -6,6 +6,10 @@ module.exports = class StateArticle{
         this.state = state;
     }
 
+    static getStateID(id){
+        return db.execute("SELECT * FROM state WHERE id = ?", [id]);
+    }
+
     static getAllStatesArticles(){
         return db.execute('SELECT * FROM state');
     }

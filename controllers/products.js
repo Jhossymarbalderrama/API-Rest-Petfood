@@ -1,5 +1,29 @@
 const Product = require("../models/products");
 
+exports.getProductID = async (req, res, next) => {
+  try {
+    const product = await Product.getProductID(req.params.id);
+    res.status(200).json(product);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
+exports.getProductIDUser = async (req, res, next) => {
+  try {
+    const product = await Product.getProductIDUser(req.params.id_user);
+    res.status(200).json(product);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
 exports.getAllProducts = async (req, res, next) => {
   try {
     const [allProducts] = await Product.getAllProducts();

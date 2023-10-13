@@ -1,5 +1,18 @@
 const Person = require("../models/person");
 
+
+exports.getPersonIDUser = async (req, res, next) => {
+  try {
+    const person = await Person.getPersonIDUser(req.params.id_user);
+    res.status(200).json(person);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
 exports.getAllPersons = async (req, res, next) => {
     try {
       const [allPersons] = await Person.getAllPersons();

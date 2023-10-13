@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.get('/', contactController.getAllContacts);
 
+router.get('/:id_user', contactController.getContactIDUser);
+
 router.post('/', contactController.postContact);
 
 router.put('/', contactController.putContact);

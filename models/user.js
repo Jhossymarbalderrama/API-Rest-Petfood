@@ -7,6 +7,10 @@ module.exports = class User{
         this.password = password;
     }
 
+    static getUserID(id){
+        return db.execute("SELECT * FROM user WHERE id = ?", [id]);
+    }
+
     static getAllUsers(){
         return db.execute('SELECT * FROM user');
     }

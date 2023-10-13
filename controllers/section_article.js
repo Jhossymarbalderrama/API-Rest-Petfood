@@ -1,8 +1,20 @@
 const SectionArticle = require("../models/section_article");
 
-exports.getAllSectionsArticles = async (req, res, next) => {
+exports.getSectionArticleID = async (req, res, next) => {
   try {
-    const [allSectionsArticles] = await SectionArticle.getAllSectionsArticles();
+    const sectionArticle = await SectionArticle.getSectionArticleID(req.params.id);
+    res.status(200).json(sectionArticle);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
+exports.getAllSectionArticles = async (req, res, next) => {
+  try {
+    const [allSectionsArticles] = await SectionArticle.getAllSectionArticles();
     res.status(200).json(allSectionsArticles);
   } catch (err) {
     if (!err.statusCode) {

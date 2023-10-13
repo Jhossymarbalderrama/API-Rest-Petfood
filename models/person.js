@@ -8,6 +8,10 @@ module.exports = class Person {
     this.lastname = lastname;
   }
 
+  static getPersonIDUser(id_user){
+    return db.execute("SELECT * FROM person WHERE id_user = ?", [id_user]);
+  }
+
   static getAllPersons() {
     return db.execute("SELECT * FROM person");
   }
