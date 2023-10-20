@@ -29,6 +29,10 @@ module.exports = class Article {
         return db.execute("SELECT * FROM article WHERE id_user = ?",[id_user]);
     }
 
+    static getArticleIDSection(id_section){
+        return db.execute("SELECT * FROM article WHERE id_section = ?", [id_section]);
+    }
+
     static getAllArticles() {
         return db.execute("SELECT * FROM article");
     }

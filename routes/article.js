@@ -10,6 +10,8 @@ router.get('/:id', articleController.getArticleID);
 
 router.get('/user/:id_user', articleController.getArticleIDUser);
 
+router.get('/section/:id_section', articleController.getArticleIDSection);
+
 router.post('/', articleController.postArticle);
 
 router.put('/', articleController.putArticle);

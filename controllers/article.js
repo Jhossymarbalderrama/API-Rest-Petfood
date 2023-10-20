@@ -23,6 +23,20 @@ exports.getArticleIDUser = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.getArticleIDSection = async (req, res, next) => {
+  try {
+    const articles = await Article.getArticleIDSection(req.params.id_section);
+    res.status(200).json(articles[0]);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
+
 exports.getAllArticles = async (req, res, next) => {
   try {
     const [allArticles] = await Article.getAllArticles();
